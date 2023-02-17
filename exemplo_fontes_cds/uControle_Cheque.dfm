@@ -172,6 +172,7 @@ object Controle_Cheque: TControle_Cheque
           2D2D1C162430333429424242424242421E463F0F0316252E0842424242424242
           4227312D21252314424242424242424242420E141B1B42424242}
         TabOrder = 2
+        OnClick = BitBtn3Click
       end
     end
   end

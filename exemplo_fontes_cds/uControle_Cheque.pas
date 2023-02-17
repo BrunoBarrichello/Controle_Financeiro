@@ -40,6 +40,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure N2ExcluirCheque1Click(Sender: TObject);
     procedure N1AlterarCheque1Click(Sender: TObject);
+    procedure BitBtn3Click(Sender: TObject);
 //    procedure Teclado1(Sender: TObject; var Key: Char; vNumero: Boolean);
   private
     { Private declarations }
@@ -70,6 +71,11 @@ end;
 procedure TControle_Cheque.BitBtn2Click(Sender: TObject);
 begin
   Close;
+end;
+
+procedure TControle_Cheque.BitBtn3Click(Sender: TObject);
+begin
+  // DM.Inserir.SQL.Text := 'SELECT NOME, DATA, VALOR, EM, PARA, NUMERO FROM CHEQUES WHERE NOME LIKE % :vNome %'
 end;
 
 procedure TControle_Cheque.ComboBox1Change(Sender: TObject);
