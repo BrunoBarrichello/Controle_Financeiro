@@ -1,0 +1,65 @@
+unit Unit2;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.StdCtrls, Vcl.Grids,
+  Vcl.DBGrids, Datasnap.DBClient, Vcl.ExtCtrls, Vcl.Buttons, System.ImageList,
+  Vcl.ImgList;
+
+type
+  TPrincipal = class(TForm)
+    Panel1: TPanel;
+    Button1: TButton;
+    Button2: TButton;
+    Button3: TButton;
+    Button4: TButton;
+    Panel2: TPanel;
+    Panel3: TPanel;
+    ImageList1: TImageList;
+    procedure Button1Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Principal: TPrincipal;
+
+implementation
+
+{$R *.dfm}
+
+uses uControle_Cheque;
+
+procedure TPrincipal.Button1Click(Sender: TObject);
+begin
+  if Controle_Cheque = nil then Application.CreateForm(TControle_Cheque, Controle_Cheque);
+
+  Controle_Cheque.ShowModal;
+  FreeAndNil(Controle_Cheque);
+
+//  cds.Append;
+//  cdsNOME.AsString := 'TESTE';
+//  CDSVALOR.ASFloat := 1;
+//  cds.Post;
+end;
+
+procedure TPrincipal.Button2Click(Sender: TObject);
+begin
+//  cds.EmptyDataSet;
+end;
+
+procedure TPrincipal.FormShow(Sender: TObject);
+begin
+//  cds.Close;
+//  cds.CreateDataSet;
+//  cds.Open;
+
+end;
+
+end.
