@@ -1,0 +1,18 @@
+program Project1;
+
+uses
+  Vcl.Forms,
+  Unit2 in 'Unit2.pas' {Principal},
+  uControle_Cheque in 'uControle_Cheque.pas' {Controle_Cheque},
+  uDM in 'uDM.pas' {DM};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TPrincipal, Principal);
+  Application.CreateForm(TControle_Cheque, Controle_Cheque);
+  Application.CreateForm(TDM, DM);
+  Application.Run;
+end.

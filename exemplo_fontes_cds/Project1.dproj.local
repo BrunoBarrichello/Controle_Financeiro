@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2020/09/22 15:37:26.000.017,=C:\Users\Mauro\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/10/01 12:46:47.000.241,=C:\Users\Mauro\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/10/01 12:52:18.000.039,=C:\Users\Mauro\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/10/07 10:24:31.000.463,=C:\Users\Mauro\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/12/10 16:08:03.000.148,=C:\Users\Mauro\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/12/11 16:03:46.000.436,=C:\Users\Mauro\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2021/02/25 10:57:21.000.981,=C:\Users\Mauro\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2022/10/29 08:42:54.000.057,=C:\Users\Mauro\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2023/01/26 08:46:57.000.073,=C:\Users\Mauro\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2023/01/26 08:52:56.000.189,C:\Users\Mauro\Documents\Embarcadero\Studio\Projects\Unit2.pas=C:\Temp2\Unit2.pas</Transaction>
+    <Transaction>2023/01/26 08:52:56.000.189,C:\Users\Mauro\Documents\Embarcadero\Studio\Projects\Unit2.dfm=C:\Temp2\Unit2.dfm</Transaction>
+    <Transaction>2023/01/26 08:52:59.000.771,C:\Users\Mauro\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\Temp2\Project1.dproj</Transaction>
+    <Transaction>2023/01/28 11:28:46.000.295,=C:\Users\Bruno\Desktop\exemplo_fontes_cds\Unit1.pas</Transaction>
+    <Transaction>2023/01/28 15:00:03.000.034,C:\Users\Bruno\Desktop\exemplo_fontes_cds\uControle_Cheque.pas=C:\Users\Bruno\Desktop\exemplo_fontes_cds\Unit1.pas</Transaction>
+    <Transaction>2023/01/28 15:00:03.000.034,C:\Users\Bruno\Desktop\exemplo_fontes_cds\uControle_Cheque.dfm=C:\Users\Bruno\Desktop\exemplo_fontes_cds\Unit1.dfm</Transaction>
+    <Transaction>2023/02/02 20:01:42.000.682,=C:\Users\Bruno\Desktop\exemplo_fontes_cds\Unit1.pas</Transaction>
+    <Transaction>2023/02/02 20:01:55.000.484,C:\Users\Bruno\Desktop\exemplo_fontes_cds\Unit1.dfm=C:\Users\Bruno\Desktop\exemplo_fontes_cds\uDM.dfm</Transaction>
+    <Transaction>2023/02/02 20:01:55.000.484,C:\Users\Bruno\Desktop\exemplo_fontes_cds\Unit1.pas=C:\Users\Bruno\Desktop\exemplo_fontes_cds\uDM.pas</Transaction>
+    <Transaction>2023/02/11 11:23:13.000.539,=C:\Users\Bruno\Desktop\exemplo_fontes_cds\Unit1.pas</Transaction>
+    <Transaction>2023/02/11 11:24:40.000.079,C:\Users\Bruno\Desktop\exemplo_fontes_cds\uCad_Cheque.pas=C:\Users\Bruno\Desktop\exemplo_fontes_cds\Unit1.pas</Transaction>
+    <Transaction>2023/02/11 11:24:40.000.079,C:\Users\Bruno\Desktop\exemplo_fontes_cds\uCad_Cheque.dfm=C:\Users\Bruno\Desktop\exemplo_fontes_cds\Unit1.dfm</Transaction>
+  </Transactions>
+</BorlandProject>
