@@ -30,6 +30,7 @@ object Principal: TPrincipal
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 0
+    ExplicitWidth = 561
   end
   object Panel2: TPanel
     Left = 0
@@ -44,6 +45,8 @@ object Principal: TPrincipal
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 1
+    ExplicitTop = 175
+    ExplicitWidth = 561
   end
   object Panel3: TPanel
     Left = 0
@@ -58,6 +61,8 @@ object Principal: TPrincipal
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 2
+    ExplicitWidth = 561
+    ExplicitHeight = 134
     object BitBtn1: TBitBtn
       Left = 8
       Top = 6
