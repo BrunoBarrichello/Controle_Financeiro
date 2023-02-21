@@ -20,8 +20,6 @@ type
     qryChequeNOME: TIBStringField;
     qryChequePARA: TIBStringField;
     qryChequeEM: TDateField;
-    qryChequeOBS: TIBStringField;
-    qryChequeDTBAIXA: TDateField;
   private
     { Private declarations }
   public

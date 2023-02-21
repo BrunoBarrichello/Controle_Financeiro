@@ -15,7 +15,7 @@ end;
 
   procedure Teclado1(Sender: TObject; var Key: Char; vNumero: Boolean);
   procedure VerificaUmaData(Sender :TObject); overload;
-
+  procedure VerificaUmaData(vDt1,vDt2 : String); overload;
 Const
   xlWBATWorksheet = -4167;
 
@@ -40,6 +40,37 @@ begin
     except
       Screen.Cursor:=crDefault;
       Application.MessageBox(PChar('ATENÇÃO !' + #13 + #13 + 'A data informada não é válida, verifique : ' + TEdit(Sender).Text),'Argus', mb_ok + MB_ICONSTOP);
+      abort;
+    end;
+  end;
+end;
+
+procedure VerificaUmaData(vDt1,vDt2 : String);
+begin
+  if (vDt1 <> '') AND (vDt1 <> '  /  /  ') then begin
+    try
+      StrToDate(vDt1);
+    except
+      Screen.Cursor:=crDefault;
+      Application.MessageBox(PChar('ATENÇÃO !' + #13 + #13 + 'A data informada não é válida, verifique : ' + vDt1),'Argus', mb_ok + MB_ICONSTOP);
+      abort;
+    end;
+  end;
+
+  if (vDt2 <> '') AND (vDt2 <> '  /  /  ') then begin
+    try
+      StrToDate(vDt2);
+    except
+      Screen.Cursor:=crDefault;
+      Application.MessageBox(PChar('ATENÇÃO !' + #13 + #13 + 'A data informada não é válida, verifique : ' + vDt2),'Argus', mb_ok + MB_ICONSTOP);
+      abort;
+    end;
+  end;
+  if (vDt1 <> '') AND (vDt1 <> '  /  /  ') and (vDt2 <> '') AND (vDt2 <> '  /  /  ') then begin
+    if StrToDate(vDt1) > StrToDate(vDt2) then begin
+      Screen.Cursor:=crDefault;
+      Application.MessageBox(PChar('ATENÇÃO !' + #13 + #13 + 'A data inicial não pode ser maior que a data final, verifique : ' + #13 +
+      'Data Inicial: ' + vDt1 + #13 + 'Data Final: ' + vDt2),'Argus', mb_ok + MB_ICONSTOP);
       abort;
     end;
   end;

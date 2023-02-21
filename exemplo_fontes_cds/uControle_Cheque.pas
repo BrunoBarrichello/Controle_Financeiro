@@ -24,9 +24,9 @@ type
     SpeedButton1: TSpeedButton;
     SpeedButton2: TSpeedButton;
     GroupBox2: TGroupBox;
-    ComboBox1: TComboBox;
+    cbx_tpPesquisa: TComboBox;
     Label3: TLabel;
-    Edit222: TEdit;
+    edt_Pesquisa: TEdit;
     DBGrid1: TDBGrid;
     BitBtn3: TBitBtn;
     PopupMenu1: TPopupMenu;
@@ -35,7 +35,7 @@ type
     procedure MaskEdit1KeyPress(Sender: TObject; var Key: Char);
     procedure BitBtn1Click(Sender: TObject);
     procedure MaskEdit1Exit(Sender: TObject);
-    procedure ComboBox1Change(Sender: TObject);
+    procedure cbx_tpPesquisaChange(Sender: TObject);
     procedure BitBtn2Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure N2ExcluirCheque1Click(Sender: TObject);
@@ -75,21 +75,51 @@ end;
 
 procedure TControle_Cheque.BitBtn3Click(Sender: TObject);
 begin
-  // DM.Inserir.SQL.Text := 'SELECT NOME, DATA, VALOR, EM, PARA, NUMERO FROM CHEQUES WHERE NOME LIKE % :vNome %'
+  if cbx_tpPesquisa.ItemIndex = 0 then begin
+    if (MaskEdit1.Text <> '  /  /  ') and (MaskEdit2.Text <> '  /  /  ') then begin
+      DM.qryCheque.Close;
+      DM.qryCheque.SQL.Text := 'SELECT NOME, DATA, VALOR, EM, PARA, NUMERO FROM CHEQUES WHERE NOME LIKE ''%' + edt_Pesquisa.Text +'%'' and (DATA BETWEEN :v1 AND :v2)';
+      //DM.qryCheque.SQL.Add('and (DATA BETWEEN :v1 AND :v2)');
+      DM.qryCheque.ParamByName('v1').AsDateTime := StrToDate(MaskEdit1.Text);
+      DM.qryCheque.ParamByName('v2').AsDateTime := StrToDate(MaskEdit2.Text);
+      DM.qryCheque.Open;
+    end
+    else begin
+      DM.qryCheque.Close;
+      DM.qryCheque.SQL.Text := 'SELECT NOME, DATA, VALOR, EM, PARA, NUMERO FROM CHEQUES WHERE NOME LIKE ''%' + edt_Pesquisa.Text +'%'' ';
+      DM.qryCheque.Open;
+    end;
+  end
+  else if cbx_tpPesquisa.ItemIndex = 1 then begin
+    if (MaskEdit1.Text <> '  /  /  ') and (MaskEdit2.Text <> '  /  /  ') then begin
+      DM.qryCheque.Close;
+      DM.qryCheque.SQL.Text := 'SELECT NOME, DATA, VALOR, EM, PARA, NUMERO FROM CHEQUES WHERE NUMERO LIKE ''%' + edt_Pesquisa.Text +''' and (DATA BETWEEN :v1 AND :v2)';
+      //DM.qryCheque.SQL.Add('and (DATA BETWEEN :v1 AND :v2)');
+      DM.qryCheque.ParamByName('v1').AsDateTime := StrToDate(MaskEdit1.Text);
+      DM.qryCheque.ParamByName('v2').AsDateTime := StrToDate(MaskEdit2.Text);
+      DM.qryCheque.Open;
+    end
+    else begin
+      DM.qryCheque.Close;
+      DM.qryCheque.SQL.Text := 'SELECT NOME, DATA, VALOR, EM, PARA, NUMERO FROM CHEQUES WHERE NUMERO LIKE ''%' + edt_Pesquisa.Text +''' ';
+      DM.qryCheque.Open;
+    end;
+  end;
+  //DBGrid1.Canvas.Font.Color := RED
 end;
 
-procedure TControle_Cheque.ComboBox1Change(Sender: TObject);
+procedure TControle_Cheque.cbx_tpPesquisaChange(Sender: TObject);
 begin
-  if ComboBox1.Text = 'Cliente' then begin
+  if cbx_tpPesquisa.Text = 'Cliente' then begin
     Label3.Caption := 'Cliente :';
-    Edit222.Width := 440;
-    Edit222.Left := 215;
+    edt_Pesquisa.Width := 440;
+    edt_Pesquisa.Left := 215;
   end;
 
-  if ComboBox1.Text = 'Nº Cheque' then begin
+  if cbx_tpPesquisa.Text = 'Nº Cheque' then begin
     Label3.Caption := 'Nº Cheque :';
-    Edit222.Width := 421;
-    Edit222.Left := 234;
+    edt_Pesquisa.Width := 421;
+    edt_Pesquisa.Left := 234;
   end;
 
 end;
@@ -97,11 +127,12 @@ end;
 procedure TControle_Cheque.FormShow(Sender: TObject);
 begin
   DM.qryCheque.Open;
+  edt_Pesquisa.SetFocus;
 end;
 
 procedure TControle_Cheque.MaskEdit1Exit(Sender: TObject);
 begin
-  VerificaUmaData(Sender);
+  VerificaUmaData(MaskEdit1.Text ,MaskEdit2.Text);
 end;
 
 procedure TControle_Cheque.MaskEdit1KeyPress(Sender: TObject; var Key: Char);

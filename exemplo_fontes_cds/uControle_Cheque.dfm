@@ -65,26 +65,26 @@ object Controle_Cheque: TControle_Cheque
       object MaskEdit1: TMaskEdit
         Left = 38
         Top = 15
-        Width = 74
+        Width = 71
         Height = 21
         Alignment = taCenter
-        EditMask = '00/00/0000;1;_'
-        MaxLength = 10
+        EditMask = '!99/99/99;1; '
+        MaxLength = 8
         TabOrder = 0
-        Text = '01/01/2001'
+        Text = '  /  /  '
         OnExit = MaskEdit1Exit
         OnKeyPress = MaskEdit1KeyPress
       end
       object MaskEdit2: TMaskEdit
         Left = 176
         Top = 15
-        Width = 75
+        Width = 73
         Height = 21
         Alignment = taCenter
-        EditMask = '00/00/0000;1;_'
-        MaxLength = 10
+        EditMask = '!99/99/99;1; '
+        MaxLength = 8
         TabOrder = 1
-        Text = '  /  /    '
+        Text = '  /  /  '
         OnExit = MaskEdit1Exit
         OnKeyPress = MaskEdit1KeyPress
       end
@@ -103,31 +103,33 @@ object Controle_Cheque: TControle_Cheque
         Height = 13
         Caption = 'Cliente :'
       end
-      object ComboBox1: TComboBox
+      object cbx_tpPesquisa: TComboBox
         Left = 4
         Top = 15
         Width = 145
         Height = 21
-        TabOrder = 0
+        ItemIndex = 0
+        TabOrder = 2
         Text = 'Cliente'
-        OnChange = ComboBox1Change
+        OnChange = cbx_tpPesquisaChange
         Items.Strings = (
           'Cliente'
           'N'#186' Cheque')
       end
-      object Edit222: TEdit
+      object edt_Pesquisa: TEdit
         Left = 215
         Top = 15
         Width = 440
         Height = 21
-        TabOrder = 1
+        CharCase = ecUpperCase
+        TabOrder = 0
       end
       object BitBtn3: TBitBtn
         Left = 661
         Top = 13
         Width = 75
         Height = 25
-        Caption = 'Pesquisar'
+        Caption = '&Pesquisar'
         Glyph.Data = {
           36050000424D3605000000000000360400002800000010000000100000000100
           08000000000000010000320B0000320B000000010000000100005A6B7300AD7B
@@ -171,7 +173,7 @@ object Controle_Cheque: TControle_Cheque
           20032434373A3A37321342424242421D25030F2D37373737311042424242420D
           2D2D1C162430333429424242424242421E463F0F0316252E0842424242424242
           4227312D21252314424242424242424242420E141B1B42424242}
-        TabOrder = 2
+        TabOrder = 1
         OnClick = BitBtn3Click
       end
     end
@@ -188,7 +190,7 @@ object Controle_Cheque: TControle_Cheque
       Top = 6
       Width = 105
       Height = 30
-      Caption = 'Fechar'
+      Caption = '&Fechar'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -12
@@ -205,7 +207,7 @@ object Controle_Cheque: TControle_Cheque
       Top = 6
       Width = 105
       Height = 30
-      Caption = 'Inserir Novo'
+      Caption = '&Inserir Novo'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -12

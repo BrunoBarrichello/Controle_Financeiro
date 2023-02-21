@@ -90,14 +90,5 @@ object DM: TDM
       FieldName = 'EM'
       Origin = 'CHEQUES.EM'
     end
-    object qryChequeOBS: TIBStringField
-      FieldName = 'OBS'
-      Origin = 'CHEQUES.OBS'
-      Size = 80
-    end
-    object qryChequeDTBAIXA: TDateField
-      FieldName = 'DTBAIXA'
-      Origin = 'CHEQUES.DTBAIXA'
-    end
   end
 end

@@ -201,6 +201,7 @@ object Cad_Cheque: TCad_Cheque
       Top = 7
       Width = 71
       Height = 22
+      NumbersOnly = True
       TabOrder = 0
     end
     object edt_Destino: TEdit
@@ -208,6 +209,7 @@ object Cad_Cheque: TCad_Cheque
       Top = 74
       Width = 488
       Height = 22
+      CharCase = ecUpperCase
       TabOrder = 5
     end
     object edt_Valor: TEdit
@@ -215,6 +217,7 @@ object Cad_Cheque: TCad_Cheque
       Top = 40
       Width = 105
       Height = 22
+      CharCase = ecUpperCase
       TabOrder = 4
     end
     object edt_Cliente: TEdit
@@ -222,31 +225,32 @@ object Cad_Cheque: TCad_Cheque
       Top = 40
       Width = 339
       Height = 22
+      CharCase = ecUpperCase
       TabOrder = 3
     end
     object MaskEdit1: TMaskEdit
       Left = 271
       Top = 7
-      Width = 88
+      Width = 86
       Height = 22
       Alignment = taCenter
-      EditMask = '00/00/0000;1;_'
-      MaxLength = 10
+      EditMask = '!99/99/99;1; '
+      MaxLength = 8
       TabOrder = 1
-      Text = '  /  /    '
+      Text = '  /  /  '
       OnExit = MaskEdit1Exit
       OnKeyPress = MaskEdit1KeyPress
     end
     object MaskEdit2: TMaskEdit
       Left = 459
       Top = 7
-      Width = 88
+      Width = 86
       Height = 22
       Alignment = taCenter
-      EditMask = '00/00/0000;1;_'
-      MaxLength = 10
+      EditMask = '!99/99/99;1; '
+      MaxLength = 8
       TabOrder = 2
-      Text = '  /  /    '
+      Text = '  /  /  '
       OnExit = MaskEdit1Exit
       OnKeyPress = MaskEdit1KeyPress
     end

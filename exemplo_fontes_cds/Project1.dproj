@@ -114,6 +114,7 @@
             <Form>Cad_Cheque</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="Funcoes.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

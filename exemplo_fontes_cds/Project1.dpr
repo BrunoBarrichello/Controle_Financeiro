@@ -5,7 +5,8 @@ uses
   Unit2 in 'Unit2.pas' {Principal},
   uControle_Cheque in 'uControle_Cheque.pas' {Controle_Cheque},
   uDM in 'uDM.pas' {DM},
-  uCad_Cheque in 'uCad_Cheque.pas' {Cad_Cheque};
+  uCad_Cheque in 'uCad_Cheque.pas' {Cad_Cheque},
+  Funcoes in 'Funcoes.pas';
 
 {$R *.res}
 
