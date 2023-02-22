@@ -241,6 +241,7 @@ object Controle_Cheque: TControle_Cheque
       TitleFont.Height = -11
       TitleFont.Name = 'Tahoma'
       TitleFont.Style = []
+      OnDrawDataCell = DBGrid1DrawDataCell
       Columns = <
         item
           Expanded = False

@@ -19,6 +19,7 @@ type
     BitBtn4: TBitBtn;
     procedure FormCreate(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
+    procedure BitBtn2Click(Sender: TObject);
   private
     procedure Ler_Wise(tipo: integer);
     function GetWinDir: string;
@@ -34,7 +35,7 @@ implementation
 
 {$R *.dfm}
 
-uses uControle_Cheque, uDM;
+uses uControle_Cheque, uDM, uControle_Fretes;
 
 function TPrincipal.GetWinDir: string;
 var
@@ -47,6 +48,7 @@ begin
   SetLength(S, i);
   Result := Trim(S);
 end;
+
 
 procedure TPrincipal.Ler_Wise(tipo: integer);
 var
@@ -91,7 +93,6 @@ end;
 
 procedure TPrincipal.BitBtn1Click(Sender: TObject);
 begin
-
   Ler_Wise(0);
 
   if Controle_Cheque = nil then Application.CreateForm(TControle_Cheque, Controle_Cheque);
@@ -100,11 +101,17 @@ begin
 end;
 
 
+procedure TPrincipal.BitBtn2Click(Sender: TObject);
+begin
+  Application.CreateForm(TControle_Fretes, Controle_Fretes);
+  Controle_Fretes.ShowModal;
+  FreeAndNil(Controle_Fretes);
+end;
+
 procedure TPrincipal.FormCreate(Sender: TObject);
 var
   i: Integer;
 begin
-
   for i := 0 to ComponentCount - 1 do begin
     if Components[i] is TBitBtn then begin
       TBitBtn(Components[i]).Font.Name := 'Arial';

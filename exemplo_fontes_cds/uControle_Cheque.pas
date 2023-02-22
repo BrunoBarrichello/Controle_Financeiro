@@ -41,6 +41,8 @@ type
     procedure N2ExcluirCheque1Click(Sender: TObject);
     procedure N1AlterarCheque1Click(Sender: TObject);
     procedure BitBtn3Click(Sender: TObject);
+    procedure DBGrid1DrawDataCell(Sender: TObject; const Rect: TRect;
+      Field: TField; State: TGridDrawState);
 //    procedure Teclado1(Sender: TObject; var Key: Char; vNumero: Boolean);
   private
     { Private declarations }
@@ -122,6 +124,13 @@ begin
     edt_Pesquisa.Left := 234;
   end;
 
+end;
+
+procedure TControle_Cheque.DBGrid1DrawDataCell(Sender: TObject;
+  const Rect: TRect; Field: TField; State: TGridDrawState);
+begin
+//  if DM.qryChequePARA.AsString <> '' then
+//    DBGrid1.Canvas.Font.Color := clRed;
 end;
 
 procedure TControle_Cheque.FormShow(Sender: TObject);

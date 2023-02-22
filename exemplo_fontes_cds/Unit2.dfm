@@ -394,6 +394,7 @@ object Principal: TPrincipal
       Layout = blGlyphTop
       ParentFont = False
       TabOrder = 1
+      OnClick = BitBtn2Click
     end
     object BitBtn3: TBitBtn
       Left = 280

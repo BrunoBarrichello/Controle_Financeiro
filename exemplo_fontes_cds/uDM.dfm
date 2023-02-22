@@ -3,7 +3,7 @@ object DM: TDM
   Top = 0
   Caption = 'DM'
   ClientHeight = 215
-  ClientWidth = 179
+  ClientWidth = 178
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -14,8 +14,7 @@ object DM: TDM
   PixelsPerInch = 96
   TextHeight = 13
   object Conexao: TIBDatabase
-    Connected = True
-    DatabaseName = '\\Bruno-PC\C:\Users\Bruno\Desktop\Banco_Dados\ARGUS_DADOS.FDB'
+    DatabaseName = 'C:\Users\Bruno\Desktop\Banco_Dados\ARGUS_DADOS.FDB'
     Params.Strings = (
       'user_name=SYSDBA'
       'password=masterkey')
@@ -26,7 +25,6 @@ object DM: TDM
     Top = 24
   end
   object IBTransaction1: TIBTransaction
-    Active = True
     AllowAutoStart = False
     DefaultDatabase = Conexao
     Params.Strings = (
@@ -57,9 +55,7 @@ object DM: TDM
     CachedUpdates = False
     ParamCheck = True
     SQL.Strings = (
-      
-        'SELECT NUMERO, DATA, VALOR, NOME, PARA, EM, OBS, DTBAIXA FROM CH' +
-        'EQUES')
+      'SELECT NUMERO, DATA, VALOR, NOME, PARA, EM FROM CHEQUES')
     Left = 112
     Top = 96
     object qryChequeNUMERO: TIntegerField
