@@ -91,4 +91,8 @@ object DM: TDM
       Origin = 'CHEQUES.EM'
     end
   end
+  object OpenBanco: TOpenDialog
+    Left = 104
+    Top = 160
+  end
 end

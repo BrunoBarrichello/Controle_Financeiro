@@ -20,6 +20,7 @@ type
     qryChequeNOME: TIBStringField;
     qryChequePARA: TIBStringField;
     qryChequeEM: TDateField;
+    OpenBanco: TOpenDialog;
   private
     { Private declarations }
   public
