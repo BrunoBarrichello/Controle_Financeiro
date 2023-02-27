@@ -20,6 +20,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
     procedure BitBtn2Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     procedure Ler_Wise(tipo: integer);
     function GetWinDir: string;
@@ -106,6 +107,12 @@ begin
   Application.CreateForm(TControle_Fretes, Controle_Fretes);
   Controle_Fretes.ShowModal;
   FreeAndNil(Controle_Fretes);
+end;
+
+procedure TPrincipal.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  DM.Conexao.Connected := False;
+  DM.IBTransaction1.Active := False;
 end;
 
 procedure TPrincipal.FormCreate(Sender: TObject);

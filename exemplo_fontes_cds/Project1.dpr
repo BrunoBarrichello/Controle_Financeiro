@@ -7,7 +7,8 @@ uses
   uDM in 'uDM.pas' {DM},
   uCad_Cheque in 'uCad_Cheque.pas' {Cad_Cheque},
   Funcoes in 'Funcoes.pas',
-  uControle_Fretes in 'uControle_Fretes.pas' {Controle_Fretes};
+  uControle_Fretes in 'uControle_Fretes.pas' {Controle_Fretes},
+  uFretes in 'uFretes.pas' {Fretes};
 
 {$R *.res}
 
@@ -19,5 +20,6 @@ begin
   Application.CreateForm(TDM, DM);
   Application.CreateForm(TCad_Cheque, Cad_Cheque);
   Application.CreateForm(TControle_Fretes, Controle_Fretes);
+  Application.CreateForm(TFretes, Fretes);
   Application.Run;
 end.

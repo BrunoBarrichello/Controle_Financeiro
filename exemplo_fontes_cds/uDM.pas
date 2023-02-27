@@ -14,13 +14,26 @@ type
     dsCheques: TDataSource;
     Inserir: TIBQuery;
     qryCheque: TIBQuery;
+    OpenBanco: TOpenDialog;
     qryChequeNUMERO: TIntegerField;
     qryChequeDATA: TDateField;
     qryChequeVALOR: TFloatField;
     qryChequeNOME: TIBStringField;
     qryChequePARA: TIBStringField;
     qryChequeEM: TDateField;
-    OpenBanco: TOpenDialog;
+    qryFrete: TIBQuery;
+    dsFretes: TDataSource;
+    qryFreteDATA: TDateField;
+    qryFreteEMPRESA: TIBStringField;
+    qryFreteDESTINO: TIBStringField;
+    qryFreteTRANSPORTE: TIBStringField;
+    qryFretePEDAGIO: TFloatField;
+    qryFreteCOMBUSTIVEL: TFloatField;
+    qryFreteREFEICOES: TFloatField;
+    qryFreteNOTA_FISCAL: TIBStringField;
+    qryFreteVALOR_FRETE: TFloatField;
+    qryFreteLUCRO: TFloatField;
+    qryFretePAGAMENTO: TIBStringField;
   private
     { Private declarations }
   public

@@ -119,6 +119,10 @@
             <Form>Controle_Fretes</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="uFretes.pas">
+            <Form>Fretes</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

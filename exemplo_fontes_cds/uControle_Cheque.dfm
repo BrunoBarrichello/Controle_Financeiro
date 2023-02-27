@@ -13,6 +13,7 @@ object Controle_Cheque: TControle_Cheque
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
+  OnClose = FormClose
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
@@ -65,7 +66,7 @@ object Controle_Cheque: TControle_Cheque
       object MaskEdit1: TMaskEdit
         Left = 38
         Top = 15
-        Width = 71
+        Width = 67
         Height = 21
         Alignment = taCenter
         EditMask = '!99/99/99;1; '
@@ -114,7 +115,8 @@ object Controle_Cheque: TControle_Cheque
         OnChange = cbx_tpPesquisaChange
         Items.Strings = (
           'Cliente'
-          'N'#186' Cheque')
+          'N'#186' Cheque'
+          'Destino')
       end
       object edt_Pesquisa: TEdit
         Left = 215
@@ -185,6 +187,19 @@ object Controle_Cheque: TControle_Cheque
     Height = 42
     Align = alBottom
     TabOrder = 1
+    object lbl_Caixa: TLabel
+      Left = 160
+      Top = 12
+      Width = 100
+      Height = 16
+      Caption = 'Caixa Total:  R$'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clGreen
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
     object BitBtn2: TBitBtn
       Left = 930
       Top = 6
@@ -219,6 +234,27 @@ object Controle_Cheque: TControle_Cheque
       TabOrder = 1
       OnClick = BitBtn1Click
     end
+    object DBEdit1: TDBEdit
+      Left = 266
+      Top = 12
+      Width = 121
+      Height = 16
+      AutoSelect = False
+      BiDiMode = bdLeftToRight
+      BorderStyle = bsNone
+      Color = clMenuBar
+      DataField = 'TOTAL_CAIXA'
+      DataSource = DataSource1
+      Enabled = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentBiDiMode = False
+      ParentFont = False
+      TabOrder = 2
+    end
   end
   object Panel3: TPanel
     Left = 0
@@ -233,6 +269,12 @@ object Controle_Cheque: TControle_Cheque
       Width = 1026
       Height = 483
       DataSource = DM.dsCheques
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
       PopupMenu = PopupMenu1
       ReadOnly = True
       TabOrder = 0
@@ -241,7 +283,7 @@ object Controle_Cheque: TControle_Cheque
       TitleFont.Height = -11
       TitleFont.Name = 'Tahoma'
       TitleFont.Style = []
-      OnDrawDataCell = DBGrid1DrawDataCell
+      OnDrawColumnCell = DBGrid1DrawColumnCell
       Columns = <
         item
           Expanded = False
@@ -252,7 +294,6 @@ object Controle_Cheque: TControle_Cheque
           Title.Font.Height = -11
           Title.Font.Name = 'Verdana'
           Title.Font.Style = [fsBold]
-          Width = 86
           Visible = True
         end
         item
@@ -604,5 +645,29 @@ object Controle_Cheque: TControle_Cheque
       Caption = '&2 - Excluir Cheque'
       OnClick = N2ExcluirCheque1Click
     end
+  end
+  object qrySoma: TIBQuery
+    Database = DM.Conexao
+    Transaction = DM.IBTransaction1
+    BufferChunks = 1000
+    CachedUpdates = False
+    DataSource = DM.dsCheques
+    ParamCheck = True
+    SQL.Strings = (
+      'SELECT SUM(VALOR) AS TOTAL_CAIXA FROM CHEQUES'
+      '')
+    Left = 704
+    Top = 546
+    object qrySomaTOTAL_CAIXA: TFloatField
+      Alignment = taLeftJustify
+      FieldName = 'TOTAL_CAIXA'
+      ProviderFlags = []
+      DisplayFormat = '#,#0.00'
+    end
+  end
+  object DataSource1: TDataSource
+    DataSet = qrySoma
+    Left = 760
+    Top = 546
   end
 end

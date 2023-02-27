@@ -38,7 +38,7 @@ type
 
 var
   Cad_Cheque: TCad_Cheque;
-  vCheque_Selecionado : String;
+  vCheque_Selecionado, vNome_Selecionado : String;
 
 implementation
 
@@ -61,6 +61,11 @@ begin
   else if (edt_Valor.Text = '') or (edt_Valor.Text = '0') then begin
     Application.MessageBox('Digite um valor válido!', 'LR Válvulas', MB_ICONINFORMATION + MB_OK);
     edt_Cliente.SetFocus;
+    Abort;
+  end
+  else if (L_Form = 'Novo') and (DM.qryCheque.Locate('NUMERO', edt_numCheque.Text, [])) and (DM.qryCheque.Locate('NOME', edt_Cliente.Text, [])) then begin
+    Application.MessageBox('Já existe este mesmo número de cheque inserido para este cliente!', 'LR Válvulas', MB_ICONINFORMATION + MB_OK);
+    edt_numCheque.SetFocus;
     Abort;
   end
   else begin
@@ -95,7 +100,7 @@ begin
     else begin
       DM.Inserir.Close;
       DM.Inserir.SQL.Text := 'UPDATE CHEQUES SET NUMERO =:vNum_Cheque, DATA =:vData_Receb, ' +
-      'EM =:vData_Deposito, NOME =:vNome, VALOR =:vValor, PARA =:vDestino WHERE NUMERO =:vCheque_Selecionado' ;
+      'EM =:vData_Deposito, NOME =:vNome, VALOR =:vValor, PARA =:vDestino WHERE NUMERO =:vCheque_Selecionado and NOME=:vNome_Selecionado' ;
 
       DM.Inserir.ParamByName('vNum_Cheque').Value := edt_numCheque.Text;
       DM.Inserir.ParamByName('vData_Receb').Value := StrToDate(MaskEdit1.Text);
@@ -104,6 +109,7 @@ begin
       DM.Inserir.ParamByName('vValor').Value := StrToFloat(edt_Valor.Text);
       DM.Inserir.ParamByName('vDestino').Value := edt_Destino.Text;
       DM.Inserir.ParamByName('vCheque_Selecionado').Value := vCheque_Selecionado;
+      DM.Inserir.ParamByName('vNome_Selecionado').Value := vNome_Selecionado;
 
       DM.Inserir.ExecSQL;
 
@@ -113,6 +119,10 @@ begin
 
     DM.qryCheque.Close;
     DM.qryCheque.Open;
+
+    Controle_Cheque.qrySoma.Close;
+    Controle_Cheque.lbl_Caixa.Caption := 'Caixa Total: ' + 'R$ ' + vSoma_Caixa;
+    Controle_Cheque.qrySoma.Open;
   end;
 end;
 
@@ -127,10 +137,12 @@ begin
 
   if L_Form = 'Alterar' then begin
     vCheque_Selecionado := Controle_Cheque.DBGrid1.SelectedField.DataSet.FieldByName('NUMERO').AsString;
+    vNome_Selecionado := Controle_Cheque.DBGrid1.SelectedField.DataSet.FieldByName('NOME').AsString;
 
     DM.Inserir.Close;
-    DM.Inserir.SQL.Text := 'SELECT NUMERO, DATA, EM, NOME, VALOR, PARA FROM CHEQUES WHERE NUMERO =:vCheque_Selecionado';
+    DM.Inserir.SQL.Text := 'SELECT NUMERO, DATA, EM, NOME, VALOR, PARA FROM CHEQUES WHERE NUMERO =:vCheque_Selecionado and NOME=:vNome_Selecionado';
     DM.Inserir.ParamByName('vCheque_Selecionado').Value := vCheque_Selecionado;
+    DM.Inserir.ParamByName('vNome_Selecionado').Value := vNome_Selecionado;
     DM.Inserir.Open;
 
     edt_numCheque.Text := DM.Inserir.FieldByName('NUMERO').AsString;

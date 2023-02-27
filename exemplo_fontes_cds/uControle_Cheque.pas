@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Buttons, Vcl.StdCtrls, Vcl.ExtCtrls,
   System.ImageList, Vcl.ImgList, Vcl.Mask, Data.DB, Vcl.Grids, Vcl.DBGrids,
-  Vcl.Menus;
+  Vcl.Menus, IBX.IBCustomDataSet, IBX.IBQuery, Vcl.DBCtrls;
 
 type
   TControle_Cheque = class(TForm)
@@ -32,6 +32,11 @@ type
     PopupMenu1: TPopupMenu;
     N1AlterarCheque1: TMenuItem;
     N2ExcluirCheque1: TMenuItem;
+    lbl_Caixa: TLabel;
+    qrySoma: TIBQuery;
+    qrySomaTOTAL_CAIXA: TFloatField;
+    DBEdit1: TDBEdit;
+    DataSource1: TDataSource;
     procedure MaskEdit1KeyPress(Sender: TObject; var Key: Char);
     procedure BitBtn1Click(Sender: TObject);
     procedure MaskEdit1Exit(Sender: TObject);
@@ -41,8 +46,9 @@ type
     procedure N2ExcluirCheque1Click(Sender: TObject);
     procedure N1AlterarCheque1Click(Sender: TObject);
     procedure BitBtn3Click(Sender: TObject);
-    procedure DBGrid1DrawDataCell(Sender: TObject; const Rect: TRect;
-      Field: TField; State: TGridDrawState);
+    procedure DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
 //    procedure Teclado1(Sender: TObject; var Key: Char; vNumero: Boolean);
   private
     { Private declarations }
@@ -53,7 +59,8 @@ type
 var
   Controle_Cheque: TControle_Cheque;
   L_Form : String;
-
+  vSoma_Caixa : Variant;
+  
 implementation
 
 {$R *.dfm}
@@ -80,30 +87,42 @@ begin
   if cbx_tpPesquisa.ItemIndex = 0 then begin
     if (MaskEdit1.Text <> '  /  /  ') and (MaskEdit2.Text <> '  /  /  ') then begin
       DM.qryCheque.Close;
-      DM.qryCheque.SQL.Text := 'SELECT NOME, DATA, VALOR, EM, PARA, NUMERO FROM CHEQUES WHERE NOME LIKE ''%' + edt_Pesquisa.Text +'%'' and (DATA BETWEEN :v1 AND :v2)';
-      //DM.qryCheque.SQL.Add('and (DATA BETWEEN :v1 AND :v2)');
+      DM.qryCheque.SQL.Text := 'SELECT NOME, DATA, VALOR, EM, PARA, NUMERO FROM CHEQUES WHERE NOME LIKE ''%' + edt_Pesquisa.Text +'%'' and (DATA BETWEEN :v1 AND :v2) ORDER BY PARA DESC ';
       DM.qryCheque.ParamByName('v1').AsDateTime := StrToDate(MaskEdit1.Text);
       DM.qryCheque.ParamByName('v2').AsDateTime := StrToDate(MaskEdit2.Text);
       DM.qryCheque.Open;
     end
     else begin
       DM.qryCheque.Close;
-      DM.qryCheque.SQL.Text := 'SELECT NOME, DATA, VALOR, EM, PARA, NUMERO FROM CHEQUES WHERE NOME LIKE ''%' + edt_Pesquisa.Text +'%'' ';
+      DM.qryCheque.SQL.Text := 'SELECT NOME, DATA, VALOR, EM, PARA, NUMERO FROM CHEQUES WHERE NOME LIKE ''%' + edt_Pesquisa.Text +'%'' ORDER BY PARA DESC ';
       DM.qryCheque.Open;
     end;
   end
   else if cbx_tpPesquisa.ItemIndex = 1 then begin
     if (MaskEdit1.Text <> '  /  /  ') and (MaskEdit2.Text <> '  /  /  ') then begin
       DM.qryCheque.Close;
-      DM.qryCheque.SQL.Text := 'SELECT NOME, DATA, VALOR, EM, PARA, NUMERO FROM CHEQUES WHERE NUMERO LIKE ''%' + edt_Pesquisa.Text +''' and (DATA BETWEEN :v1 AND :v2)';
-      //DM.qryCheque.SQL.Add('and (DATA BETWEEN :v1 AND :v2)');
+      DM.qryCheque.SQL.Text := 'SELECT NOME, DATA, VALOR, EM, PARA, NUMERO FROM CHEQUES WHERE NUMERO LIKE ''%' + edt_Pesquisa.Text +''' and (DATA BETWEEN :v1 AND :v2) ORDER BY PARA DESC ';
       DM.qryCheque.ParamByName('v1').AsDateTime := StrToDate(MaskEdit1.Text);
       DM.qryCheque.ParamByName('v2').AsDateTime := StrToDate(MaskEdit2.Text);
       DM.qryCheque.Open;
     end
     else begin
       DM.qryCheque.Close;
-      DM.qryCheque.SQL.Text := 'SELECT NOME, DATA, VALOR, EM, PARA, NUMERO FROM CHEQUES WHERE NUMERO LIKE ''%' + edt_Pesquisa.Text +''' ';
+      DM.qryCheque.SQL.Text := 'SELECT NOME, DATA, VALOR, EM, PARA, NUMERO FROM CHEQUES WHERE NUMERO LIKE ''%' + edt_Pesquisa.Text +''' ORDER BY PARA DESC ';
+      DM.qryCheque.Open;
+    end;    
+  end
+  else if cbx_tpPesquisa.ItemIndex = 2 then begin
+    if (MaskEdit1.Text <> '  /  /  ') and (MaskEdit2.Text <> '  /  /  ') then begin
+      DM.qryCheque.Close;
+      DM.qryCheque.SQL.Text := 'SELECT NOME, DATA, VALOR, EM, PARA, NUMERO FROM CHEQUES WHERE PARA LIKE ''%' + edt_Pesquisa.Text +'%'' and (DATA BETWEEN :v1 AND :v2) ORDER BY PARA DESC ';
+      DM.qryCheque.ParamByName('v1').AsDateTime := StrToDate(MaskEdit1.Text);
+      DM.qryCheque.ParamByName('v2').AsDateTime := StrToDate(MaskEdit2.Text);
+      DM.qryCheque.Open;
+    end
+    else begin
+      DM.qryCheque.Close;
+      DM.qryCheque.SQL.Text := 'SELECT NOME, DATA, VALOR, EM, PARA, NUMERO FROM CHEQUES WHERE PARA LIKE ''%' + edt_Pesquisa.Text +'%'' ORDER BY PARA DESC ';
       DM.qryCheque.Open;
     end;
   end;
@@ -126,17 +145,34 @@ begin
 
 end;
 
-procedure TControle_Cheque.DBGrid1DrawDataCell(Sender: TObject;
-  const Rect: TRect; Field: TField; State: TGridDrawState);
+procedure TControle_Cheque.DBGrid1DrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
 begin
-//  if DM.qryChequePARA.AsString <> '' then
-//    DBGrid1.Canvas.Font.Color := clRed;
+	if ((gdSelected in State) or (gdFocused in State)) then begin
+		Dbgrid1.Canvas.Font.Color:= clBlack;
+		Dbgrid1.Canvas.Brush.Color:= $00FFE8CC ;
+	end;
+
+  if DM.qryChequePARA.AsString <> '' then
+    DBGrid1.Canvas.Font.Color := clRed;
+
+  Dbgrid1.DefaultDrawDataCell(Rect, dbgrid1.columns[datacol].field, State);
+end;
+
+procedure TControle_Cheque.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  qrySoma.Close;
+  DM.qryCheque.Close;
 end;
 
 procedure TControle_Cheque.FormShow(Sender: TObject);
 begin
   DM.qryCheque.Open;
   edt_Pesquisa.SetFocus;
+
+  qrySoma.Close;
+  qrySoma.SQL.Text := 'SELECT SUM(VALOR) AS TOTAL_CAIXA FROM CHEQUES WHERE PARA = trim('''')';
+  qrySoma.Open;
 end;
 
 procedure TControle_Cheque.MaskEdit1Exit(Sender: TObject);
