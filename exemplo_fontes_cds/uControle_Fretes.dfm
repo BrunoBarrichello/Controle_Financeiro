@@ -38,6 +38,11 @@ object Controle_Fretes: TControle_Fretes
         Alignment = taCenter
         Expanded = False
         FieldName = 'ID'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
         Title.Alignment = taCenter
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = clWindowText
@@ -50,6 +55,11 @@ object Controle_Fretes: TControle_Fretes
       item
         Expanded = False
         FieldName = 'DATA'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
         Title.Caption = 'Data'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = clWindowText
@@ -61,6 +71,11 @@ object Controle_Fretes: TControle_Fretes
       item
         Expanded = False
         FieldName = 'EMPRESA'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
         Title.Caption = 'Empresa'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = clWindowText
@@ -73,6 +88,11 @@ object Controle_Fretes: TControle_Fretes
       item
         Expanded = False
         FieldName = 'DESTINO'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
         Title.Caption = 'Destino'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = clWindowText
@@ -85,6 +105,11 @@ object Controle_Fretes: TControle_Fretes
       item
         Expanded = False
         FieldName = 'TRANSPORTE'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
         Title.Caption = 'Transporte'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = clWindowText
@@ -97,6 +122,11 @@ object Controle_Fretes: TControle_Fretes
       item
         Expanded = False
         FieldName = 'PEDAGIO'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
         Title.Alignment = taRightJustify
         Title.Caption = 'Pedagio'
         Title.Font.Charset = DEFAULT_CHARSET
@@ -110,6 +140,11 @@ object Controle_Fretes: TControle_Fretes
       item
         Expanded = False
         FieldName = 'COMBUSTIVEL'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
         Title.Alignment = taRightJustify
         Title.Caption = 'Combustivel'
         Title.Font.Charset = DEFAULT_CHARSET
@@ -117,12 +152,17 @@ object Controle_Fretes: TControle_Fretes
         Title.Font.Height = -12
         Title.Font.Name = 'Arial'
         Title.Font.Style = [fsBold]
-        Width = 80
+        Width = 103
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'REFEICOES'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
         Title.Alignment = taRightJustify
         Title.Caption = 'Refei'#231#245'es'
         Title.Font.Charset = DEFAULT_CHARSET
@@ -130,26 +170,18 @@ object Controle_Fretes: TControle_Fretes
         Title.Font.Height = -12
         Title.Font.Name = 'Arial'
         Title.Font.Style = [fsBold]
-        Width = 70
+        Width = 100
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'NOTA_FISCAL'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
         Title.Caption = 'Nota Fiscal'
-        Title.Font.Charset = DEFAULT_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -12
-        Title.Font.Name = 'Arial'
-        Title.Font.Style = [fsBold]
-        Width = 70
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'VALOR_FRETE'
-        Title.Alignment = taRightJustify
-        Title.Caption = 'Valor de Frete'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = clWindowText
         Title.Font.Height = -12
@@ -160,7 +192,30 @@ object Controle_Fretes: TControle_Fretes
       end
       item
         Expanded = False
+        FieldName = 'VALOR_FRETE'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        Title.Alignment = taRightJustify
+        Title.Caption = 'Valor de Frete'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -12
+        Title.Font.Name = 'Arial'
+        Title.Font.Style = [fsBold]
+        Width = 123
+        Visible = True
+      end
+      item
+        Expanded = False
         FieldName = 'LUCRO'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
         Title.Alignment = taRightJustify
         Title.Caption = 'Lucro'
         Title.Font.Charset = DEFAULT_CHARSET
@@ -174,6 +229,11 @@ object Controle_Fretes: TControle_Fretes
         Alignment = taCenter
         Expanded = False
         FieldName = 'PAGAMENTO'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
         Title.Alignment = taCenter
         Title.Caption = 'Pago Cliente'
         Title.Font.Charset = DEFAULT_CHARSET
@@ -181,13 +241,18 @@ object Controle_Fretes: TControle_Fretes
         Title.Font.Height = -12
         Title.Font.Name = 'Arial'
         Title.Font.Style = [fsBold]
-        Width = 95
+        Width = 117
         Visible = True
       end
       item
         Alignment = taCenter
         Expanded = False
         FieldName = 'PAGTO_TERCEIRO'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
         Title.Alignment = taCenter
         Title.Caption = 'Pago Terceiro'
         Title.Font.Charset = DEFAULT_CHARSET
@@ -195,7 +260,7 @@ object Controle_Fretes: TControle_Fretes
         Title.Font.Height = -12
         Title.Font.Name = 'Arial'
         Title.Font.Style = [fsBold]
-        Width = 95
+        Width = 125
         Visible = True
       end>
   end
@@ -675,6 +740,7 @@ object Controle_Fretes: TControle_Fretes
     Top = 376
     object AlterarLanamento1: TMenuItem
       Caption = '&1 - Alterar Lan'#231'amento'
+      OnClick = AlterarLanamento1Click
     end
     object ExcluirLanamento1: TMenuItem
       Caption = '&2 - Excluir Lan'#231'amento'

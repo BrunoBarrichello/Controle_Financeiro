@@ -39,6 +39,7 @@ type
     procedure ExcluirLanamento1Click(Sender: TObject);
     procedure DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure AlterarLanamento1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -47,7 +48,7 @@ type
 
 var
   Controle_Fretes: TControle_Fretes;
-  vFrete_Selecionado : String;
+  vFrete_Selecionado, L_Form : String;
 
 implementation
 
@@ -55,8 +56,19 @@ uses uDM, Unit2, uFretes;
 
 {$R *.dfm}
 
+procedure TControle_Fretes.AlterarLanamento1Click(Sender: TObject);
+begin
+  L_Form := 'Alterar';
+
+  Application.CreateForm(TFretes, Fretes);;
+  Fretes.ShowModal;
+  FreeAndNil(Fretes);
+end;
+
 procedure TControle_Fretes.BitBtn4Click(Sender: TObject);
 begin
+  L_Form := 'Novo';
+
   Application.CreateForm(TFretes, Fretes);;
   Fretes.ShowModal;
   FreeAndNil(Fretes);

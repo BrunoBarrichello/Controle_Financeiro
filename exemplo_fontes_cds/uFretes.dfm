@@ -269,7 +269,6 @@ object Fretes: TFretes
       CharCase = ecUpperCase
       NumbersOnly = True
       TabOrder = 6
-      OnExit = edt_RefeicoesExit
     end
     object edt_Destino: TEdit
       Left = 376
@@ -286,7 +285,6 @@ object Fretes: TFretes
       Height = 21
       CharCase = ecUpperCase
       TabOrder = 5
-      OnExit = edt_CombustivelExit
     end
     object edt_Empresa: TEdit
       Left = 78
@@ -323,7 +321,6 @@ object Fretes: TFretes
       Height = 21
       CharCase = ecUpperCase
       TabOrder = 2
-      OnExit = edt_vlrPedagioExit
     end
     object edt_ValorFrete: TEdit
       Left = 262
@@ -350,7 +347,6 @@ object Fretes: TFretes
       CharCase = ecUpperCase
       NumbersOnly = True
       TabOrder = 7
-      OnExit = edt_ValorTerceiroExit
     end
     object edt_Lucro: TEdit
       Left = 438
