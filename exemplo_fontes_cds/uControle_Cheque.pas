@@ -201,7 +201,7 @@ begin
 
   if Application.MessageBox('Deseja realmente excluir o cheque selecionado?', 'LR Válvulas', MB_YESNO + MB_ICONQUESTION) = mrNo then
     abort
-  else
+  else begin
     DM.Inserir.Close;
     DM.Inserir.SQL.Text := 'DELETE FROM CHEQUES WHERE NUMERO =:vCheque_Selecionado';
     DM.Inserir.ParamByName('vCheque_Selecionado').Value := vCheque_Selecionado;
@@ -210,6 +210,7 @@ begin
 
     DM.qryCheque.Close;
     DM.qryCheque.Open;
+  end;
 end;
 
 end.

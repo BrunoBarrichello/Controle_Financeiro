@@ -32,8 +32,10 @@ type
     qryFreteREFEICOES: TFloatField;
     qryFreteNOTA_FISCAL: TIBStringField;
     qryFreteVALOR_FRETE: TFloatField;
-    qryFreteLUCRO: TFloatField;
     qryFretePAGAMENTO: TIBStringField;
+    qryFreteID: TIntegerField;
+    qryFretePAGTO_TERCEIRO: TIBStringField;
+    qryFreteLUCRO: TFloatField;
   private
     { Private declarations }
   public

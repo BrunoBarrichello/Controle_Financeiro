@@ -1,9 +1,10 @@
 object Fretes: TFretes
   Left = 0
   Top = 0
+  BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
-  Caption = 'Controle de Fretes'
-  ClientHeight = 194
+  Caption = 'Controle de Fretes - Cadastro'
+  ClientHeight = 220
   ClientWidth = 646
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -13,31 +14,18 @@ object Fretes: TFretes
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
-  WindowState = wsMaximized
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
     Left = 0
-    Top = 152
+    Top = 179
     Width = 646
-    Height = 42
+    Height = 41
     Align = alBottom
     TabOrder = 0
-    object lbl_Caixa: TLabel
-      Left = 8
-      Top = 12
-      Width = 103
-      Height = 16
-      Caption = 'N'#186' Lan'#231'amento:'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clGreen
-      Font.Height = -13
-      Font.Name = 'Tahoma'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
     object BitBtn1: TBitBtn
-      Left = 293
+      Left = 156
       Top = 6
       Width = 160
       Height = 30
@@ -77,9 +65,10 @@ object Fretes: TFretes
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
       ParentFont = False
       TabOrder = 0
+      OnClick = BitBtn1Click
     end
     object BitBtn2: TBitBtn
-      Left = 468
+      Left = 322
       Top = 6
       Width = 160
       Height = 30
@@ -119,39 +108,19 @@ object Fretes: TFretes
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
       ParentFont = False
       TabOrder = 1
-    end
-    object DBEdit1: TDBEdit
-      Left = 117
-      Top = 12
-      Width = 121
-      Height = 16
-      AutoSelect = False
-      BiDiMode = bdLeftToRight
-      BorderStyle = bsNone
-      Color = clMenuBar
-      DataField = 'TOTAL_CAIXA'
-      Enabled = False
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'Tahoma'
-      Font.Style = [fsBold]
-      ParentBiDiMode = False
-      ParentFont = False
-      TabOrder = 2
+      OnClick = BitBtn2Click
     end
   end
   object Panel2: TPanel
     Left = 0
-    Top = 0
+    Top = 42
     Width = 646
-    Height = 152
+    Height = 137
     Align = alClient
     TabOrder = 1
-    ExplicitHeight = 185
     object Label6: TLabel
       Left = 327
-      Top = 50
+      Top = 43
       Width = 43
       Height = 15
       Caption = 'Destino'
@@ -164,7 +133,7 @@ object Fretes: TFretes
     end
     object Label5: TLabel
       Left = 18
-      Top = 83
+      Top = 76
       Width = 72
       Height = 15
       Caption = 'Combust'#237'vel:'
@@ -177,7 +146,7 @@ object Fretes: TFretes
     end
     object Label4: TLabel
       Left = 129
-      Top = 17
+      Top = 10
       Width = 63
       Height = 15
       Caption = 'Transporte:'
@@ -190,7 +159,7 @@ object Fretes: TFretes
     end
     object Label2: TLabel
       Left = 18
-      Top = 17
+      Top = 12
       Width = 29
       Height = 15
       Caption = 'Data:'
@@ -203,7 +172,7 @@ object Fretes: TFretes
     end
     object Label3: TLabel
       Left = 18
-      Top = 50
+      Top = 43
       Width = 54
       Height = 15
       Caption = 'Empresa:'
@@ -216,7 +185,7 @@ object Fretes: TFretes
     end
     object Label1: TLabel
       Left = 225
-      Top = 83
+      Top = 76
       Width = 59
       Height = 15
       Caption = 'Refei'#231#245'es:'
@@ -229,7 +198,7 @@ object Fretes: TFretes
     end
     object Label7: TLabel
       Left = 449
-      Top = 17
+      Top = 10
       Width = 79
       Height = 15
       Caption = 'Valor Ped'#225'gio:'
@@ -241,8 +210,8 @@ object Fretes: TFretes
       ParentFont = False
     end
     object Label8: TLabel
-      Left = 419
-      Top = 83
+      Left = 178
+      Top = 109
       Width = 78
       Height = 15
       Caption = 'Valor do Frete:'
@@ -255,7 +224,7 @@ object Fretes: TFretes
     end
     object Label9: TLabel
       Left = 18
-      Top = 116
+      Top = 109
       Width = 62
       Height = 15
       Caption = 'Nota Fiscal'
@@ -267,8 +236,8 @@ object Fretes: TFretes
       ParentFont = False
     end
     object Label10: TLabel
-      Left = 178
-      Top = 116
+      Left = 394
+      Top = 76
       Width = 48
       Height = 15
       Caption = 'Valor 3'#176' :'
@@ -280,8 +249,8 @@ object Fretes: TFretes
       ParentFont = False
     end
     object Label11: TLabel
-      Left = 327
-      Top = 116
+      Left = 398
+      Top = 109
       Width = 34
       Height = 15
       Caption = 'Lucro:'
@@ -292,112 +261,166 @@ object Fretes: TFretes
       Font.Style = []
       ParentFont = False
     end
-    object edt_numCheque: TEdit
+    object edt_Refeicoes: TEdit
       Left = 290
-      Top = 81
-      Width = 118
+      Top = 74
+      Width = 93
       Height = 21
+      CharCase = ecUpperCase
       NumbersOnly = True
-      TabOrder = 0
+      TabOrder = 6
+      OnExit = edt_RefeicoesExit
     end
     object edt_Destino: TEdit
       Left = 376
-      Top = 48
+      Top = 41
       Width = 252
       Height = 21
       CharCase = ecUpperCase
-      TabOrder = 1
+      TabOrder = 4
     end
-    object edt_Valor: TEdit
+    object edt_Combustivel: TEdit
       Left = 96
-      Top = 81
+      Top = 74
       Width = 118
       Height = 21
       CharCase = ecUpperCase
-      TabOrder = 2
+      TabOrder = 5
+      OnExit = edt_CombustivelExit
     end
-    object edt_Cliente: TEdit
+    object edt_Empresa: TEdit
       Left = 78
-      Top = 48
+      Top = 41
       Width = 238
       Height = 21
       CharCase = ecUpperCase
       TabOrder = 3
     end
-    object MaskEdit1: TMaskEdit
+    object edt_Data: TMaskEdit
       Left = 53
-      Top = 15
+      Top = 8
       Width = 65
       Height = 21
       Alignment = taCenter
+      CharCase = ecUpperCase
       EditMask = '!99/99/99;1; '
       MaxLength = 8
-      TabOrder = 4
+      TabOrder = 0
       Text = '  /  /  '
     end
-    object Edit1: TEdit
+    object edt_Transporte: TEdit
       Left = 198
-      Top = 15
+      Top = 8
       Width = 240
       Height = 21
       CharCase = ecUpperCase
-      TabOrder = 5
+      TabOrder = 1
     end
-    object Edit2: TEdit
+    object edt_vlrPedagio: TEdit
       Left = 534
-      Top = 15
+      Top = 8
       Width = 94
       Height = 21
       CharCase = ecUpperCase
-      TabOrder = 6
+      TabOrder = 2
+      OnExit = edt_vlrPedagioExit
     end
-    object Edit3: TEdit
-      Left = 503
-      Top = 81
+    object edt_ValorFrete: TEdit
+      Left = 262
+      Top = 107
       Width = 125
       Height = 21
       CharCase = ecUpperCase
-      TabOrder = 7
+      TabOrder = 10
+      OnExit = edt_ValorFreteExit
     end
-    object Edit4: TEdit
+    object edt_NFe: TEdit
       Left = 86
-      Top = 114
+      Top = 107
       Width = 81
       Height = 21
       CharCase = ecUpperCase
-      TabOrder = 8
-    end
-    object Edit5: TEdit
-      Left = 232
-      Top = 114
-      Width = 84
-      Height = 21
-      NumbersOnly = True
       TabOrder = 9
     end
-    object Edit6: TEdit
-      Left = 367
-      Top = 114
-      Width = 84
+    object edt_ValorTerceiro: TEdit
+      Left = 448
+      Top = 74
+      Width = 98
       Height = 21
+      CharCase = ecUpperCase
       NumbersOnly = True
-      TabOrder = 10
+      TabOrder = 7
+      OnExit = edt_ValorTerceiroExit
     end
-    object CheckBox1: TCheckBox
+    object edt_Lucro: TEdit
+      Left = 438
+      Top = 107
+      Width = 87
+      Height = 21
+      CharCase = ecUpperCase
+      Enabled = False
+      NumbersOnly = True
+      TabOrder = 11
+    end
+    object check_PagoCliente: TCheckBox
       Left = 536
-      Top = 116
+      Top = 109
       Width = 92
       Height = 17
       Caption = ' Pago ( Cliente )'
-      TabOrder = 11
+      TabOrder = 12
+      OnClick = check_PagoClienteClick
     end
-    object CheckBox2: TCheckBox
-      Left = 459
-      Top = 116
+    object check_PagoTerceiro: TCheckBox
+      Left = 557
+      Top = 76
       Width = 71
       Height = 17
       Caption = ' Pago ( 3'#186' )'
-      TabOrder = 12
+      TabOrder = 8
+      OnClick = check_PagoTerceiroClick
+    end
+  end
+  object Panel3: TPanel
+    Left = 0
+    Top = 0
+    Width = 646
+    Height = 42
+    Align = alTop
+    TabOrder = 2
+    object Label12: TLabel
+      Left = 243
+      Top = 11
+      Width = 133
+      Height = 17
+      Caption = 'N'#186' LAN'#199'AMENTO :'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -14
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object DBEdit1: TDBEdit
+      Left = 382
+      Top = 12
+      Width = 121
+      Height = 16
+      AutoSelect = False
+      BiDiMode = bdLeftToRight
+      BorderStyle = bsNone
+      Color = clMenuBar
+      DataField = 'ID'
+      DataSource = DM.dsFretes
+      Enabled = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -14
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentBiDiMode = False
+      ParentFont = False
+      TabOrder = 0
     end
   end
 end

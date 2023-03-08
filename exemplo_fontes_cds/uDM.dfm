@@ -101,7 +101,7 @@ object DM: TDM
     CachedUpdates = False
     ParamCheck = True
     SQL.Strings = (
-      'SELECT * FROM FRETES ORDER BY PAGAMENTO')
+      'SELECT * FROM FRETES ORDER BY PAGAMENTO ')
     Left = 232
     Top = 96
     object qryFreteDATA: TDateField
@@ -126,14 +126,17 @@ object DM: TDM
     object qryFretePEDAGIO: TFloatField
       FieldName = 'PEDAGIO'
       Origin = 'FRETES.PEDAGIO'
+      DisplayFormat = '#,#0.00'
     end
     object qryFreteCOMBUSTIVEL: TFloatField
       FieldName = 'COMBUSTIVEL'
       Origin = 'FRETES.COMBUSTIVEL'
+      DisplayFormat = '#,#0.00'
     end
     object qryFreteREFEICOES: TFloatField
       FieldName = 'REFEICOES'
       Origin = 'FRETES.REFEICOES'
+      DisplayFormat = '#,#0.00'
     end
     object qryFreteNOTA_FISCAL: TIBStringField
       FieldName = 'NOTA_FISCAL'
@@ -143,16 +146,30 @@ object DM: TDM
     object qryFreteVALOR_FRETE: TFloatField
       FieldName = 'VALOR_FRETE'
       Origin = 'FRETES.VALOR_FRETE'
-    end
-    object qryFreteLUCRO: TFloatField
-      FieldName = 'LUCRO'
-      Origin = 'FRETES.LUCRO'
+      DisplayFormat = '#,#0.00'
     end
     object qryFretePAGAMENTO: TIBStringField
       FieldName = 'PAGAMENTO'
       Origin = 'FRETES.PAGAMENTO'
       FixedChar = True
       Size = 1
+    end
+    object qryFreteID: TIntegerField
+      Alignment = taLeftJustify
+      FieldName = 'ID'
+      Origin = 'FRETES.ID'
+      Required = True
+    end
+    object qryFretePAGTO_TERCEIRO: TIBStringField
+      FieldName = 'PAGTO_TERCEIRO'
+      Origin = 'FRETES.PAGTO_TERCEIRO'
+      FixedChar = True
+      Size = 1
+    end
+    object qryFreteLUCRO: TFloatField
+      FieldName = 'LUCRO'
+      Origin = 'FRETES.LUCRO'
+      DisplayFormat = '#,#0.00'
     end
   end
   object dsFretes: TDataSource

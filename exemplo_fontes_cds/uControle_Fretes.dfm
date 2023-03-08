@@ -14,6 +14,7 @@ object Controle_Fretes: TControle_Fretes
   OldCreateOrder = False
   Position = poScreenCenter
   WindowState = wsMaximized
+  OnClose = FormClose
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
@@ -24,66 +25,177 @@ object Controle_Fretes: TControle_Fretes
     Height = 648
     Align = alClient
     DataSource = DM.dsFretes
+    PopupMenu = PopupMenu1
     TabOrder = 0
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
+    OnDrawColumnCell = DBGrid1DrawColumnCell
     Columns = <
+      item
+        Alignment = taCenter
+        Expanded = False
+        FieldName = 'ID'
+        Title.Alignment = taCenter
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -12
+        Title.Font.Name = 'Arial'
+        Title.Font.Style = [fsBold]
+        Width = 35
+        Visible = True
+      end
       item
         Expanded = False
         FieldName = 'DATA'
+        Title.Caption = 'Data'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -12
+        Title.Font.Name = 'Arial'
+        Title.Font.Style = [fsBold]
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'EMPRESA'
+        Title.Caption = 'Empresa'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -12
+        Title.Font.Name = 'Arial'
+        Title.Font.Style = [fsBold]
+        Width = 250
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'DESTINO'
+        Title.Caption = 'Destino'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -12
+        Title.Font.Name = 'Arial'
+        Title.Font.Style = [fsBold]
+        Width = 250
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'TRANSPORTE'
+        Title.Caption = 'Transporte'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -12
+        Title.Font.Name = 'Arial'
+        Title.Font.Style = [fsBold]
+        Width = 140
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'PEDAGIO'
+        Title.Alignment = taRightJustify
+        Title.Caption = 'Pedagio'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -12
+        Title.Font.Name = 'Arial'
+        Title.Font.Style = [fsBold]
+        Width = 75
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'COMBUSTIVEL'
+        Title.Alignment = taRightJustify
+        Title.Caption = 'Combustivel'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -12
+        Title.Font.Name = 'Arial'
+        Title.Font.Style = [fsBold]
+        Width = 80
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'REFEICOES'
+        Title.Alignment = taRightJustify
+        Title.Caption = 'Refei'#231#245'es'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -12
+        Title.Font.Name = 'Arial'
+        Title.Font.Style = [fsBold]
+        Width = 70
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'NOTA_FISCAL'
+        Title.Caption = 'Nota Fiscal'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -12
+        Title.Font.Name = 'Arial'
+        Title.Font.Style = [fsBold]
+        Width = 70
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VALOR_FRETE'
+        Title.Alignment = taRightJustify
+        Title.Caption = 'Valor de Frete'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -12
+        Title.Font.Name = 'Arial'
+        Title.Font.Style = [fsBold]
+        Width = 95
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'LUCRO'
+        Title.Alignment = taRightJustify
+        Title.Caption = 'Lucro'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -12
+        Title.Font.Name = 'Arial'
+        Title.Font.Style = [fsBold]
         Visible = True
       end
       item
+        Alignment = taCenter
         Expanded = False
         FieldName = 'PAGAMENTO'
+        Title.Alignment = taCenter
+        Title.Caption = 'Pago Cliente'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -12
+        Title.Font.Name = 'Arial'
+        Title.Font.Style = [fsBold]
+        Width = 95
+        Visible = True
+      end
+      item
+        Alignment = taCenter
+        Expanded = False
+        FieldName = 'PAGTO_TERCEIRO'
+        Title.Alignment = taCenter
+        Title.Caption = 'Pago Terceiro'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -12
+        Title.Font.Name = 'Arial'
+        Title.Font.Style = [fsBold]
+        Width = 95
         Visible = True
       end>
   end
@@ -110,6 +222,7 @@ object Controle_Fretes: TControle_Fretes
       Top = 8
       Width = 84
       Height = 30
+      Anchors = [akTop, akRight]
       Caption = '&Fechar'
       DisabledImageIndex = 1
       Font.Charset = DEFAULT_CHARSET
@@ -127,7 +240,6 @@ object Controle_Fretes: TControle_Fretes
       Top = 8
       Width = 105
       Height = 30
-      Anchors = [akTop, akRight]
       Caption = '&Inserir Novo'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -138,6 +250,7 @@ object Controle_Fretes: TControle_Fretes
       Images = ImageList1
       ParentFont = False
       TabOrder = 1
+      OnClick = BitBtn4Click
     end
   end
   object Panel1: TPanel
@@ -556,5 +669,16 @@ object Controle_Fretes: TControle_Fretes
       0000800180010000000080038001000000008023800100000000800781810000
       00009F0FC3C300000000801FFFFF000000000000000000000000000000000000
       000000000000}
+  end
+  object PopupMenu1: TPopupMenu
+    Left = 1368
+    Top = 376
+    object AlterarLanamento1: TMenuItem
+      Caption = '&1 - Alterar Lan'#231'amento'
+    end
+    object ExcluirLanamento1: TMenuItem
+      Caption = '&2 - Excluir Lan'#231'amento'
+      OnClick = ExcluirLanamento1Click
+    end
   end
 end
