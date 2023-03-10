@@ -175,7 +175,7 @@ begin
   if check_PagoCliente.Checked = True then
     vCheck_Cliente := 'S'
   else
-    vCheck_Cliente := 'N';
+    vCheck_Cliente := '';
 end;
 
 procedure TFretes.check_PagoTerceiroClick(Sender: TObject);
@@ -183,18 +183,34 @@ begin
   if check_PagoTerceiro.Checked = True then
     vCheck_Terceiro := 'S'
   else
-    vCheck_Terceiro := 'N';
+    vCheck_Terceiro := '';
 end;
 
 procedure TFretes.edt_ValorFreteExit(Sender: TObject);
 var vValor_Frete, vValor_Terceiro, vRefeicoes, vCombustivel, vPedagio : Double;
 begin
+  if edt_ValorFrete.Text = EmptyStr then
+    edt_ValorFrete.Text := '0';
+  if edt_ValorTerceiro.Text = EmptyStr then
+    edt_ValorTerceiro.Text := '0';
+  if edt_Refeicoes.Text = EmptyStr then
+    edt_Refeicoes.Text := '0';
+  if edt_Combustivel.Text = EmptyStr then
+    edt_Combustivel.Text := '0';
+  if edt_vlrPedagio.Text = EmptyStr then
+    edt_vlrPedagio.Text := '0';
+
   vValor_Frete := StrToFloat(edt_ValorFrete.Text);
   vValor_Terceiro := StrToFloat(edt_ValorTerceiro.Text);
   vRefeicoes := StrToFloat(edt_Refeicoes.Text);
   vCombustivel := StrToFloat(edt_Combustivel.Text);
   vPedagio := StrToFloat(edt_vlrPedagio.Text);
-  edt_Lucro.Text := FloatToStr(vValor_Frete - vValor_Terceiro - vRefeicoes - vCombustivel - vPedagio);
+
+//  if (edt_ValorFrete.Text <> '') and (edt_ValorFrete.Text <> '0') then
+    edt_Lucro.Text := FloatToStr(vValor_Frete - vValor_Terceiro - vRefeicoes - vCombustivel - vPedagio)
+//  else if (edt_ValorFrete.Text = '') or (edt_ValorFrete.Text = '0') then
+//    edt_Lucro.Text := FloatToStr(vValor_Frete - vRefeicoes - vCombustivel - vPedagio)
+
 end;
 procedure TFretes.FormShow(Sender: TObject);
 begin

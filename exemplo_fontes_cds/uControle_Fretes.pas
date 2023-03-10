@@ -25,7 +25,7 @@ type
     MaskEdit2: TMaskEdit;
     ImageList1: TImageList;
     BitBtn1: TBitBtn;
-    RadioGroup1: TRadioGroup;
+    vTp_Pesq: TRadioGroup;
     BitBtn2: TBitBtn;
     edt_Pesquisa: TEdit;
     BitBtn3: TBitBtn;
@@ -40,6 +40,7 @@ type
     procedure DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure AlterarLanamento1Click(Sender: TObject);
+    procedure BitBtn3Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -65,6 +66,16 @@ begin
   FreeAndNil(Fretes);
 end;
 
+procedure TControle_Fretes.BitBtn3Click(Sender: TObject);
+begin
+  if vTp_Pesq.ItemIndex = 3 then begin
+    DM.Inserir.Close;
+    DM.Inserir.SQL.Text := 'SELECT * FROM FRETES WHERE TRANSPORTE=:vTransportador';
+    DM.Inserir.ParamByName('vTransportador').Value := edt_Pesquisa.Text;
+  end;
+
+end;
+
 procedure TControle_Fretes.BitBtn4Click(Sender: TObject);
 begin
   L_Form := 'Novo';
@@ -76,11 +87,29 @@ end;
 
 procedure TControle_Fretes.DBGrid1DrawColumnCell(Sender: TObject;
   const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
-  var Campo1Value : String;
+var
+  Text: string;
+  TextRect: TRect;
+  TextWidth: Integer;
+  TextX: Integer;
 begin
-//  if DM.qryFretePAGAMENTO.AsString = 'S' then begin
-//    DBGrid1.Canvas.TextRect(Rect, Rect.Left, Rect.Top, 'Pago' + Campo1Value);
-//  end;
+  if (Column.FieldName = 'PAGAMENTO') or (Column.FieldName = 'PAGTO_TERCEIRO') then begin
+    if Column.Field.AsString = 'S' then begin // Verifica se o valor é "S"
+      Text := 'PAGO';
+      DBGrid1.Canvas.Brush.Color := clGreen; // Define a cor de fundo da célula como verde
+      DBGrid1.Canvas.Font.Color := clWhite; // Define a cor da fonte da célula como branca
+      DBGrid1.Canvas.Font.Style := [fsBold];
+      DBGrid1.Canvas.FillRect(Rect); // Limpa a célula
+      TextWidth := DBGrid1.Canvas.TextWidth(Text);
+      TextX := Rect.Left + (Rect.Right - Rect.Left - TextWidth) div 2;
+      TextRect := Rect;
+      TextRect.Left := TextX;
+      DBGrid1.Canvas.TextRect(TextRect, TextX, Rect.Top + 2, Text);
+    end
+    else
+      DBGrid1.DefaultDrawColumnCell(Rect, DataCol, Column, State); // Mantém o valor padrão
+  end else
+    DBGrid1.DefaultDrawColumnCell(Rect, DataCol, Column, State); // Mantém o valor padrão
 end;
 
 procedure TControle_Fretes.ExcluirLanamento1Click(Sender: TObject);
